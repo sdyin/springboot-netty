@@ -1,11 +1,15 @@
 package com.sdyin.netty.server;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class NettyApplication implements CommandLineRunner{
+
+	@Value("${netty.port}")
+	private int port;
 
 	public static void main(String[] args) {
 		SpringApplication.run(NettyApplication.class, args);
@@ -16,7 +20,6 @@ public class NettyApplication implements CommandLineRunner{
  	 */
 	@Override
 	public void  run(String... args) throws Exception {
-		int port=8080;
 		new ChatServer().bind(port);
 	}
 }
