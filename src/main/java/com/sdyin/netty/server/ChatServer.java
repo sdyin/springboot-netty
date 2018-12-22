@@ -74,7 +74,7 @@ public class ChatServer {
 			//绑定端口，同步等待成功（sync()：同步阻塞方法，等待bind操作完成才继续）
 			//ChannelFuture主要用于异步操作的通知回调
 			ChannelFuture cf = sb.bind(port).sync();
-			System.out.println("服务端启动在8080端口。");
+			System.out.println("服务端启动在9000端口。");
 			//等待服务端监听端口关闭
 			cf.channel().closeFuture().sync();
 		} finally {
