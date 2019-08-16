@@ -25,7 +25,7 @@ import io.netty.handler.stream.ChunkedWriteHandler;
 public class ChatServer {
 
 	public static void main(String[] args) throws Exception {
-		int port=8080; //服务端默认端口
+		int port=9000; //服务端默认端口
 		new ChatServer().bind(port);
 	}
 	
