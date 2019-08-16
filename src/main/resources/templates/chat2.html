@@ -1,0 +1,60 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    Netty WebSocket服务器
+    <head>
+<body>
+<script type="text/javascript">
+    var socket;
+    if(!window.WebSocket){
+        window.WebSocket = window.MozWebSocket;
+    }
+
+    if(window.WebSocket){
+        socket = new WebSocket("ws://localhost:9000/websocket");
+        socket.onmessage = function(event){
+            var ta = document.getElementById('responseText');
+            ta.value = '';
+            ta.value = event.data;
+        }
+
+        socket.onopen = function(event){
+            var ta = document.getElementById('responseText');
+            ta.value = "打开WebSocket服务器正常";
+        }
+
+        socket.onclose = function(event){
+            var ta = document.getElementById('responseText');
+            ta.value = "webSocket 关闭";
+        }
+
+
+
+    }
+
+    function send(){
+        if(socket.readyState == WebSocket.OPEN){
+            var message = document.getElementById('message').value;
+            socket.send(message);
+        }else{
+            alert("WebSocket 链接未建立成功！！");
+        }
+    }
+</script>
+<form onsubmit="return false;">
+    <input id="message" type="text" name = "message" value="Netty"/>
+
+    <br/><br/>
+    <input type="button" value="发送" onclick="send()"/>
+    <hr color="blue"/>
+    <h3>服务器应答消息</h3>
+    <textarea id="responseText" style="width:500px;height:300px;"></textarea>
+</form>
+
+
+
+
+</body>
+
+
+</html>

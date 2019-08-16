@@ -104,7 +104,7 @@ $(document).ready(function(){
 			}
 			
 			if(window.WebSocket){
-				CHAT.socket = new WebSocket("ws://localhost:9000/im");
+				CHAT.socket = new WebSocket("ws://localhost:9000/websocket");
 				CHAT.socket.onopen = function(e){
 					console.log("客户端连接成功.");
 					CHAT.socket.send("[LOGIN]["+new Date().getTime()+"]["+CHAT.nickName+"]");
